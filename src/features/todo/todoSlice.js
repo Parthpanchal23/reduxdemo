@@ -7,7 +7,6 @@ const initialState = {
     }]
 }
 
-
 export const todoSlice = createSlice({
     name: "Todo",
     initialState,
@@ -16,21 +15,14 @@ export const todoSlice = createSlice({
             const todo = {
                 id: nanoid(), text: action.payload
             };
-
-            state.todospush(todo);
-
+            state.todos.push(todo);
         },
-        removeTodoo: (state, action) => {
+        removeTodo: (state, action) => {
             state.todos = state.todos.filter((rodo) => rodo.id !== action.payload)
         },
-        updateTodo: (state, action) => {
-            const id = state.action.payload.id;
-
-        }
-
     }
 });
 
-export const { addTodo, removeTodoo } = todoSlice.actions;
+export const { addTodo, removeTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;
